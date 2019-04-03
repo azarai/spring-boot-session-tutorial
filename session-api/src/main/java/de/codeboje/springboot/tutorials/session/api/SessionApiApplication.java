@@ -6,8 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.session.web.http.HeaderHttpSessionStrategy;
-import org.springframework.session.web.http.HttpSessionStrategy;
+import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
+import org.springframework.session.web.http.HttpSessionIdResolver;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +22,8 @@ public class SessionApiApplication {
 	}
 	
 	@Bean
-	public HttpSessionStrategy httpSessionStrategy() {
-		return new HeaderHttpSessionStrategy(); 
+	public HttpSessionIdResolver httpSessionIdResolver() {
+	    return HeaderHttpSessionIdResolver.xAuthToken(); 
 	}
 	
 	public static void main(String[] args) {

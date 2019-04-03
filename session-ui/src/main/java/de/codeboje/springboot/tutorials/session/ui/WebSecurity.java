@@ -11,11 +11,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.csrf().disable()
-			.formLogin()
-				.and()
-					.authorizeRequests()
-					.anyRequest()
-					.authenticated();
+			.authorizeRequests()
+				.anyRequest()
+				.authenticated()
+			.and()
+				.formLogin();
 	}
 
 }
